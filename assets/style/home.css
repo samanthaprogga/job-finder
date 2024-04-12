@@ -348,9 +348,10 @@ main {
     transition: all 0.25s ease-in-out;
 }
 
-
 .fa-ellipsis {
     transition: color 0.3s ease, transform 0.3s ease;
+    vertical-align: top;
+    align-items: center;
 }
 
 .fa-ellipsis:hover {
@@ -359,6 +360,15 @@ main {
     cursor: pointer;
 }
 
+.media-preview {
+    display: inline-block;
+    vertical-align: middle;  
+    padding: 0 10px;  
+}
+
+.post-container input[type="text"] {
+    width: calc(100% - 120px);  
+}
 
 .post-heading img {
     height: 60px;
