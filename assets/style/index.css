@@ -9,21 +9,22 @@
 
 main {
     display: flex;
+    color: #fefeff;
 }
 p, h1, h2, h3 {
     font-family: Arial, sans-serif;
-    color: white;
+    color: #2d53de;
 }
 
 
 .banner {
     width: 50%;
     height: 100dvh;
-    background: url(../img/istockphoto-1363430976-612x612.jpg) bottom / cover no-repeat;
+    background: url(../img/img-06.jpg) bottom / cover no-repeat;
 }
 
 h1 {
-    color: #8900eb;
+    color:#042dc1 ;
     font-size: 42px;
     font-weight: 600;
     margin-top: 48px;
@@ -36,6 +37,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #eff1f3;
 }
 
 h2 {
@@ -45,13 +47,14 @@ h2 {
 }
 
 p {
-    color: #9900ff;
+    color: #000;
 }
 
 input {
     background-color: #fafafa;
     width: 100%;
-    border: 0.5px solid #000;
+    color: #000;
+    border: 0.5px solid #153bc7;
     border-radius: 5px;
     padding: 10px 15px;
 }
@@ -77,12 +80,12 @@ input {
 }
 
 .checkbox a {
-    color: #949494;
+    color: #3b3a3a;
     transition: all 0.30s ease-in-out;
 }
 
 .checkbox a:hover {
-    color: #9900ff;
+    color: #153bc7;
 }
 
 .mail-input {
@@ -96,14 +99,14 @@ input {
 .login-button {
     width: 100%;
     padding: 10px 0;
-    background-color: #9900ff;
+    background-color: #1c44d3;
     color: #fff;
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
 }
 
 .login-button:hover {
-    background-color: #9900ff;
+    background-color: #062cb4;
 }
 
 .line-break {
@@ -138,7 +141,7 @@ input {
 }
 
 .v-signin a:hover {
-    color: #9900ff;
+    color: #153bc7;
 }
 
 .v-signin a:first-child {
@@ -156,7 +159,7 @@ input {
 }
 
 .signup a {
-    color: #9900ff;
+    color: #153bc7;
     margin-left: 5px;
 }
 
