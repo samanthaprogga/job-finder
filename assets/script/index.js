@@ -10,17 +10,20 @@ const loginDetails = storedLoginDetails ? storedLoginDetails : [{ email: "random
 let invalidMsg = select(".error-message");
 
 function loginPage() {
-    let email = select(".mail").value.trim();
+    let email = select(".mail").value.trim().toLowerCase();  
     let password = select(".password").value.trim();
 
     let isValidEmail = email.length > 0;
     let isValidPassword = password.length > 0;
 
-    let isMatch = loginDetails.some(details => details.email === email && details.password === password);
+    // Check for email and password match in a case-insensitive manner for the email
+    let isMatch = loginDetails.some(details => 
+        details.email.toLowerCase() === email && details.password === password
+    );
 
     let message = (!isValidEmail ? "Email is required " : "") +
-        (!isValidPassword ? "Password is required " : "") +
-        (!isMatch && isValidEmail && isValidPassword ? "Wrong email or password" : "");
+                  (!isValidPassword ? "Password is required " : "") +
+                  (!isMatch && isValidEmail && isValidPassword ? "Wrong email or password" : "");
 
     invalidMsg.classList.toggle("is-visible", message !== "");
     invalidMsg.innerHTML = message;
@@ -28,7 +31,7 @@ function loginPage() {
     if (isMatch) {
         select(".mail").value = "";
         select(".password").value = "";
-        window.location.href = "home.html"; // Redirect to home.html
+        window.location.href = "home.html"; // Redirect to home.html if login is successful
     }
 }
 
