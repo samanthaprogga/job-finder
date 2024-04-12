@@ -11,7 +11,11 @@ main {
     display: flex;
     color: #fefeff;
 }
-p, h1, h2, h3 {
+
+p,
+h1,
+h2,
+h3 {
     font-family: Arial, sans-serif;
     color: #2d53de;
 }
@@ -24,7 +28,7 @@ p, h1, h2, h3 {
 }
 
 h1 {
-    color:#042dc1 ;
+    color: #042dc1;
     font-size: 42px;
     font-weight: 600;
     margin-top: 48px;
@@ -65,11 +69,13 @@ input {
     align-items: center;
 }
 
-.checkbox input, .login-button {
+.checkbox input,
+.login-button {
     cursor: pointer;
 }
 
-.checkbox p, .checkbox a {
+.checkbox p,
+.checkbox a {
     font-size: 12px;
     margin-top: 2px;
 }
@@ -117,7 +123,8 @@ input {
     gap: 10px;
 }
 
-.line-one, .line-two {
+.line-one,
+.line-two {
     border-bottom: 1px solid #bbb;
     height: 1px;
     width: 170px;
@@ -175,4 +182,93 @@ input {
 .error-message.is-visible {
     visibility: visible;
     opacity: 1;
+}
+
+
+@media (max-width: 1024px) {
+
+    /* Adjustments for tablet screens */
+    .banner,
+    .login-section {
+        width: 100%;
+        height: auto;
+    }
+
+    h1,
+    h2 {
+        margin-left: 20px;
+        font-size: 24px;
+    }
+
+    input,
+    .login-button {
+        padding: 8px 10px;
+    }
+
+    .line-one,
+    .line-two {
+        width: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Mobile adjustments */
+    main {
+        flex-direction: column;
+    }
+
+    h1,
+    h2 {
+        font-size: 20px;
+    }
+
+    .loginbox {
+        padding: 20px;
+    }
+
+    .mail-input input,
+    .pass-input input {
+        font-size: 14px;
+    }
+
+    .login-button {
+        font-size: 16px;
+    }
+
+    .signup a,
+    .checkbox a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    h1,
+    h2 {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    input,
+    .login-button {
+        font-size: 14px;
+    }
+
+    .checkbox,
+    .signup {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .line-break {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .line-one,
+    .line-two {
+        width: 80px;
+    }
 }
