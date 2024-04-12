@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 
+
 .container {
     width: min(100% - 30px, 1280px);
     margin-inline: auto;
