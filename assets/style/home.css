@@ -9,6 +9,12 @@
     flex-direction: column;
 }
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #18191a;
+    color: #ffffff;
+}
+
 p,
 h1,
 h2,
@@ -21,24 +27,9 @@ h4 {
     color: white;
 }
 
-
-/* ---------------Header style-------------- */
-/* ----------------------------------------- */
-
-
-main {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-color: #18191a;
-    padding: 0 20px;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #18191a;
-    color: #ffffff;
-}
+/* -------------------------------------------- */
+/* Header                                      */
+/* -------------------------------------------- */
 
 header {
     width: 100%;
@@ -116,8 +107,17 @@ header input {
     font-size: 18px;
 }
 
-/* ------------------Main style---------------- */
 /* -------------------------------------------- */
+/* Main                                         */
+/* -------------------------------------------- */
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #18191a;
+    padding: 0 20px;
+}
 
 .my-profile,
 .posts,
@@ -141,7 +141,7 @@ header input {
     padding: 30px;
     border-radius: 6px;
     height: 36%;
-    width: 320px;
+    width: 330px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -240,7 +240,7 @@ header input {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 6px;
     margin-bottom: 20px;
-    width: 580px;
+    width: 570px;
     color: #fff;
 }
 
@@ -491,8 +491,8 @@ header input {
     color: #f0efef;
 }
 
-
-/* ------------------Main style---------------- */
+/* -------------------------------------------- */
+/* Footer                                       */
 /* -------------------------------------------- */
 
 footer nav {
@@ -523,4 +523,145 @@ footer nav a:hover {
     text-decoration: underline;
 }
 
+/* -------------------------------------------- */
+/* Media Queries                                */
+/* -------------------------------------------- */
 
+
+@media (max-width: 1024px) {
+
+    /* Tablet adjustments */
+    .container {
+        padding: 0 10px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    header input {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    nav {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+        align-items: center;
+        margin: 0;
+    }
+
+    .links-2 li {
+        width: auto;
+        margin: 5px auto;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .my-profile,
+    .friends-post,
+    .post-here {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Mobile adjustments */
+    body,
+    main {
+        padding: 0 5px;
+    }
+
+    .heading a img,
+    .post-container img,
+    .post-heading img,
+    .user-card img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .my-profile {
+        height: 100%;
+    }
+
+    .name,
+    .followers h2,
+    .post-heading h3 {
+        font-size: 16px;
+    }
+
+    .post-content p,
+    .post-content a {
+        font-size: 14px;
+    }
+
+    .user-card {
+        flex: 1 0 100%;
+        margin-bottom: 10px;
+    }
+
+    .my-profile {
+        padding: 15px;
+    }
+
+    .post-here,
+    .friends-post {
+        margin-bottom: 10px;
+    }
+
+    header {
+        padding: 5px 0;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        align-items: center;
+    }
+
+    .links-2 li {
+        padding: 8px;
+        margin: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    header input,
+    .post-here input {
+        padding: 8px 10px;
+    }
+
+    .post-content p,
+    .post-content a {
+        font-size: 12px;
+    }
+
+    header input {
+        padding: 8px;
+    }
+
+    nav ul li {
+        font-size: 14px;
+        padding: 10px;
+        margin-bottom: 5px;
+    }
+
+    .post-options i,
+    .post-container i {
+        font-size: 20px;
+    }
+}
