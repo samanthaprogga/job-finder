@@ -5,7 +5,7 @@ import { onEvent, select } from "./utils.js";
 const loginBtn = select(".login-button");
 
 const storedLoginDetails = JSON.parse(localStorage.getItem("login"));
-const loginDetails = storedLoginDetails ? storedLoginDetails : [{ email: "demouser@mail.com", password: "admin" }];
+const loginDetails = storedLoginDetails ? storedLoginDetails : [{ email: "random@mail.com", password: "pass" }];
 
 let invalidMsg = select(".error-message");
 

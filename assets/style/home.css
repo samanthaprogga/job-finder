@@ -318,7 +318,7 @@ header input {
 
 .live-video {
     color: #f02849;
-    padding: 2px 20px;
+    padding: 6px 18px;
     border-radius: 20px;
     background-color: transparent;
     transition: all 0.25s ease-in-out;
