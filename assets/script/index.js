@@ -19,8 +19,8 @@ function loginPage() {
     let isMatch = loginDetails.some(details => details.email === email && details.password === password);
 
     let message = (!isValidEmail ? "Email is required " : "") +
-                    (!isValidPassword ? "Password is required " : "") +
-                    (!isMatch && isValidEmail && isValidPassword ? "Wrong email or password" : "");
+        (!isValidPassword ? "Password is required " : "") +
+        (!isMatch && isValidEmail && isValidPassword ? "Wrong email or password" : "");
 
     invalidMsg.classList.toggle("is-visible", message !== "");
     invalidMsg.innerHTML = message;

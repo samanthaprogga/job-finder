@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-@import url(./reset.css);
 
 .container {
     width: min(100% - 30px, 1280px);
@@ -186,89 +185,86 @@ input {
 
 
 @media (max-width: 1024px) {
-
-    /* Adjustments for tablet screens */
-    .banner,
-    .login-section {
-        width: 100%;
-        height: auto;
+    /* Adjustments for devices less than or equal to tablet sizes */
+    .banner, .login-section {
+        width: 100%;  
+        height: auto; 
     }
 
-    h1,
-    h2 {
-        margin-left: 20px;
-        font-size: 24px;
+    .container {
+        padding: 10px;
     }
 
-    input,
-    .login-button {
-        padding: 8px 10px;
+    h1, h2 {
+        font-size: 28px; 
+        margin-left: 20px; 
     }
 
-    .line-one,
-    .line-two {
-        width: 100px;
+    .loginbox {
+        padding: 20px; 
+    }
+
+    input, .login-button {
+        padding: 12px 15px; 
+    }
+
+    .line-one, .line-two {
+        width: 50%; 
     }
 }
 
 @media (max-width: 768px) {
-
-    /* Mobile adjustments */
+    /* Adjustments for mobile devices */
     main {
-        flex-direction: column;
+        flex-direction: column; 
     }
 
-    h1,
-    h2 {
-        font-size: 20px;
+    h1, h2 {
+        font-size: 24px;
     }
 
     .loginbox {
-        padding: 20px;
+        width: 90%; 
+        margin: auto;
     }
 
-    .mail-input input,
-    .pass-input input {
-        font-size: 14px;
+    input, .login-button {
+        font-size: 16px; 
     }
 
-    .login-button {
-        font-size: 16px;
+    .signup a, .checkbox a {
+        font-size: 14px; 
     }
 
-    .signup a,
-    .checkbox a {
-        font-size: 14px;
+    .line-one, .line-two {
+        margin: auto;
     }
 }
 
 @media (max-width: 480px) {
-
-    h1,
-    h2 {
-        margin-top: 20px;
-        font-size: 18px;
+    /* Further adjustments for smaller mobile devices */
+    h1, h2 {
+        font-size: 20px; 
     }
 
-    input,
-    .login-button {
-        font-size: 14px;
+    input, .login-button {
+        font-size: 15px; 
     }
 
-    .checkbox,
-    .signup {
-        flex-direction: column;
-        align-items: center;
+    .mail-input, .pass-input, .login-button {
+        margin-top: 10px; 
+    }
+
+    .checkbox, .signup {
+        flex-direction: column; 
     }
 
     .line-break {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; 
         gap: 5px;
     }
 
-    .line-one,
-    .line-two {
-        width: 80px;
+    .line-one, .line-two {
+        width: 80%; 
     }
 }
