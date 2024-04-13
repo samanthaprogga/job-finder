@@ -652,6 +652,10 @@ footer nav a:hover {
     .post-here {
         width: 100%;
     }
+    .post-content {
+        font-size: 14px; 
+        padding: 15px; 
+}
 }
 
 @media (max-width: 768px) {
@@ -715,6 +719,15 @@ footer nav a:hover {
         padding: 8px;
         margin: 3px;
     }
+    .post-content {
+        font-size: 12px;  
+        padding: 10px; 
+    }
+
+    .post-content img {
+        max-width: 100%; 
+        height: auto;     
+    }
 }
 
 @media (max-width: 480px) {
@@ -734,13 +747,17 @@ footer nav a:hover {
     }
 
     nav ul li {
-        font-size: 14px;
+        font-size: 12px;
         padding: 10px;
         margin-bottom: 5px;
     }
 
     .post-options i,
     .post-container i {
-        font-size: 20px;
+        font-size: 18px;
+    }
+    .post-content {
+        font-size: 10px;  
+        padding: 6px;    
     }
 }
