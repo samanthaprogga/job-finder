@@ -42,18 +42,41 @@ async function displayUsers() {
 function initPostOptions() {
     const postInput = document.querySelector('.post-here input');
     const postButton = document.querySelector('.fa-circle-arrow-right');
+    const feelingsButton = document.querySelector('.feeling');
+    const feelingsList = document.querySelector('.feeling-list');
     let tempMediaContent = null;
     const mediaPreviewContainer = document.querySelector('.post-here .media-preview');
+    let selectedFeeling = '';
 
-    postButton.addEventListener('click', function() {
-        if (tempMediaContent) {
-            createPost(tempMediaContent, 'media', new Date());
+    feelingsButton.addEventListener('click', function (event) {
+        // Toggle display of feelings list
+        feelingsList.style.display = feelingsList.style.display === 'none' ? 'block' : 'none';
+        event.stopPropagation(); // Prevent event from bubbling up to document
+    });
+
+    feelingsList.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', function (event) {
+            selectedFeeling = `Feeling ${button.textContent}`;
+            postInput.value = selectedFeeling; // Update input value with selected feeling
+            feelingsList.style.display = 'none'; // Hide after selection
+            event.stopPropagation(); // Prevent event from bubbling up to document
+        });
+    });
+
+    // Close feelings list when clicked outside
+    document.addEventListener('click', function (event) {
+        if (!feelingsButton.contains(event.target) && !feelingsList.contains(event.target)) {
+            feelingsList.style.display = 'none';
+        }
+    });
+
+    postButton.addEventListener('click', function () {
+        if (tempMediaContent || postInput.value.trim() || selectedFeeling) {
+            createPost({ text: postInput.value.trim(), media: tempMediaContent, feeling: selectedFeeling }, new Date());
+            postInput.value = ''; // Clear the input field
+            selectedFeeling = ''; // Clear the selected feeling
             tempMediaContent = null;
-            postInput.value = '';  // Clear the input field
-            mediaPreviewContainer.innerHTML = '';  // Clear the preview
-        } else if (postInput.value.trim()) {
-            createPost(postInput.value.trim(), 'text', new Date());
-            postInput.value = '';
+            mediaPreviewContainer.innerHTML = '';
         }
     });
 
@@ -65,9 +88,9 @@ function initPostOptions() {
         fileInput.onchange = e => {
             const file = e.target.files[0];
             const reader = new FileReader();
-            reader.onload = function(ev) {
-                tempMediaContent = {src: ev.target.result, type: file.type.startsWith('image') ? 'image' : 'video'};
-                displayMediaPreview(tempMediaContent, mediaPreviewContainer, postInput);
+            reader.onload = function (ev) {
+                tempMediaContent = { src: ev.target.result, type: file.type.startsWith('image') ? 'image' : 'video' };
+                displayMediaPreview(tempMediaContent, mediaPreviewContainer);
             };
             reader.readAsDataURL(file);
         };
@@ -75,74 +98,81 @@ function initPostOptions() {
     });
 }
 
-function displayMediaPreview(mediaContent, container, inputField) {
-    container.innerHTML = '';  // Clear previous content
+
+
+function displayMediaPreview(mediaContent, container) {
+    container.innerHTML = ''; // Clear previous content
     if (mediaContent.type === 'image') {
         const img = document.createElement('img');
         img.src = mediaContent.src;
         img.alt = "Image Preview";
-        img.style.maxWidth = '50px';  // Display as a small thumbnail
-        img.style.maxHeight = '50px';
+        img.style.width = '50px'; // Display as a small thumbnail
+        img.style.weight = '50px';
+        img.style.borderRadius = '5px';
         container.appendChild(img);
-        inputField.value = 'Image attached';  // Indicate attachment
     } else if (mediaContent.type === 'video') {
         const icon = document.createElement('i');
         icon.className = 'fa fa-video';
-        icon.style.fontSize = '24px';  // Display a video icon
+        icon.style.fontSize = '24px'; // Display a video icon
         container.appendChild(icon);
-        inputField.value = 'Video attached';  // Indicate attachment
     }
 }
 
-function createPost(content, type, timestamp) {
+function createPost(content, timestamp) {
     const postsContainer = document.querySelector('.posts');
     const postHereSection = document.querySelector('.post-here');
     const postElement = document.createElement('div');
     postElement.className = 'friends-post';
 
     let dateFormatted = formatDate(timestamp);
+    let feelingDisplay = '';
+    if (content.feeling) {
+        const feelingsMap = {
+            happy: '😊',
+            sad: '😢',
+            excited: '🤩',
+            angry: '😠',
+            loved: '😍',
+        };
+        feelingDisplay = feelingsMap[content.feeling] ? ` is feeling ${feelingsMap[content.feeling]}` : '';
+    }
+
 
     let innerHTMLContent = `
         <div class="post-heading">
             <div class="heading-profile">
                 <div class="profile-pic"><a href="#"><img src="./assets/img/pfp.jpg" alt="user"></a></div>
                 <div class="profile-info">
-                    <h3>Nishat Samanta</h3>
+                    <h3>Your Post ${feelingDisplay}</h3>
                     <p class="time-posted">${dateFormatted}</p>
                 </div>
             </div>
+        <div>
+            <i class="fa-solid fa-ellipsis"></i>
         </div>
-        <div class="post-content">`;
-
-    if (type === 'text') {
-        innerHTMLContent += `<p>${content}</p>`;
-    } else if (type === 'media') {
-        innerHTMLContent += content.type === 'image' ? `<img src="${content.src}" alt="Posted Image"/>` : `<video controls src="${content.src}"></video>`;
-    }
-
-    innerHTMLContent += `
-            <div>
-                <a href="#"><i class="far fa-thumbs-up"></i> Like</a>
-                <a href="#"><i class="fa-regular fa-message"></i> Comment</a>
-                <a href="#"><i the="fa-regular fa-share-from-square"></i> Share</a>
-            </div>
+        </div>
+        <div class="post-content">
+            ${content.text ? `<p>${content.text}</p>` : ''}
+            ${content.media ? (content.media.type === 'image' ? `<img src="${content.media.src}" alt="Posted Image"/>` : `<video controls src="${content.media.src}"></video>`) : ''}
+        </div>
+        <div class="post-actions">
+            <a class="interactive" href="#"><i class="far fa-thumbs-up"></i> Like</a>
+            <a class="interactive" href="#"><i class="fa-regular fa-message"></i> Comment</a>
+            <a class="interactive" href="#"><i class="fa-regular fa-share-from-square"></i> Share</a>
+            <a class="interactive" href="#"><i class="fa-regular fa-bookmark"></i> Save</a>
         </div>`;
 
     postElement.innerHTML = innerHTMLContent;
-    postsContainer.insertBefore(postElement, postHereSection.nextSibling); // Insert new post right after the post-container
+    postsContainer.insertBefore(postElement, postHereSection.nextSibling);
 }
+
 
 function formatDate(date) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString('en-US', options);
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        displayUsers();
-        initPostOptions();
-    });
-} else {
+document.addEventListener('DOMContentLoaded', function () {
     displayUsers();
     initPostOptions();
-}
+});

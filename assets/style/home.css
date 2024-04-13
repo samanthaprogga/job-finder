@@ -1,10 +1,10 @@
 @charset "utf-8";
 
 .container {
-    max-width: 1280px;
+    max-width: auto;
     width: 100%;
-    margin: auto;
     padding: 0;
+    margin: auto;
     display: flex;
     flex-direction: column;
 }
@@ -24,7 +24,7 @@ h4 {
     font-family: system-ui, -apple-system, BlinkMacSystemFont,
         'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
         'Helvetica Neue', sans-serif;
-    color: white;
+    color: #ffffff;
 }
 
 /* -------------------------------------------- */
@@ -141,7 +141,7 @@ main {
     padding: 30px;
     border-radius: 6px;
     height: 36%;
-    width: 330px;
+    width: 340px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -180,6 +180,8 @@ main {
 .my-info-1 i {
     color: #3d61e1;
     line-height: 1.5;
+    margin-right: 5px;
+    padding: 3px;
 }
 
 .followers {
@@ -194,12 +196,12 @@ main {
 
 .followers div:first-child,
 .followers div:nth-child(2) {
-    border-top: 1px solid #d8d8d8;
-    border-bottom: 1px solid #d8d8d8;
+    border-top: 1px solid #444242;
+    border-bottom: 1px solid #444242;
 }
 
 .followers div:nth-child(2) {
-    border-left: 1px solid #d8d8d8;
+    border-left: 1px solid #444242;
 }
 
 .followers h2 {
@@ -240,7 +242,7 @@ main {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 6px;
     margin-bottom: 20px;
-    width: 570px;
+    width: 600px;
     color: #fff;
 }
 
@@ -285,7 +287,7 @@ main {
 
 
 .line-break {
-    border-top: 1px solid #d8d8d8;
+    border-top: 1px solid #444242;
     margin-bottom: 20px;
 }
 
@@ -318,7 +320,7 @@ main {
 
 .live-video {
     color: #f02849;
-    padding: 6px 18px;
+    padding: 8px 18px;
     border-radius: 20px;
     background-color: transparent;
     transition: all 0.25s ease-in-out;
@@ -348,6 +350,36 @@ main {
     transition: all 0.25s ease-in-out;
 }
 
+.feeling-list {
+    display: none;
+    position: absolute;
+    background-color: #2f3238;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+}
+
+.feeling-list button {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: left;
+}
+
+.feeling-list button:hover {
+    background-color: #090909;
+    width: 100%;
+}
+
+
 .fa-ellipsis {
     transition: color 0.3s ease, transform 0.3s ease;
     vertical-align: top;
@@ -362,12 +394,14 @@ main {
 
 .media-preview {
     display: inline-block;
-    vertical-align: middle;  
-    padding: 0 10px;  
+    vertical-align: middle;
+    padding: 0 10px;
 }
 
+
+
 .post-container input[type="text"] {
-    width: calc(100% - 120px);  
+    width: calc(100% - 120px);
 }
 
 .post-heading img {
@@ -410,6 +444,40 @@ main {
     color: #fff;
 }
 
+.post-actions .interactive {
+    color: #817f7f;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: transparent;
+    transition: all 0.25s ease-in-out;
+    text-align: center;
+    justify-content: center;
+    font-size: 18px;
+    margin: auto 5px;
+}
+
+.post-actions .interactive:hover {
+    background-color: #2c2d2e;
+}
+
+.post-actions {
+    border-top: 1px solid #444242;
+    border-bottom: 1px solid #444242;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+.interactive+.interactive {
+    margin-left: 20px;
+}
+
+.line>div {
+    border-top: 1px solid #444242;
+    border-bottom: 1px solid #444242;
+    padding: 12px;
+    margin-top: 10px;
+}
+
 .post-content div {
     margin-top: 15px;
 }
@@ -420,6 +488,10 @@ main {
     border-radius: 20px;
     background-color: transparent;
     transition: all 0.25s ease-in-out;
+    text-align: center;
+    justify-content: center;
+    font-size: 18px;
+    margin: 0 5px;
 }
 
 .post-content a:hover {
@@ -437,12 +509,8 @@ main {
 /* Third Column */
 
 .user-column {
-    width: 100%;
-}
-
-.user-card {
-    text-align: center;
-    margin-bottom: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 .user-card img {
@@ -477,6 +545,7 @@ main {
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    text-align: center;
 }
 
 .user-card:hover {
